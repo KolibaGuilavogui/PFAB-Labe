@@ -1,0 +1,1 @@
+<img src="{{asset('assets/images/logo.jpg')}}" {{ $attributes }} alt="Logo de l'application" class="h-16 w-auto">
