@@ -7,16 +7,17 @@
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+            <x-input-label for="email" class=" inline-flex items-center gap-2 text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-heroicon-o-envelope class="w-5 h-5" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"  placeholder="Votre adresse email" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Mot de passe')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
+            <x-input-label for="password" class=" inline-flex items-center gap-2 text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-heroicon-o-lock-closed class="w-5 h-5" />
+            <x-text-input id="password" placeholder="Votre mot de passe" class="block mt-1 w-full"
                             type="password"
                             name="password"
                             required autocomplete="current-password" />

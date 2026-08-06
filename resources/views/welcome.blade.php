@@ -20,7 +20,7 @@
             <img src="{{ asset('assets/images/logo.jpg') }}" alt="" class="w-64 h-64 mt-4 mx-auto object-contain" style="border: 2px solid #4CAF50; border-radius: 50%;">
         </div>
     </head>
-    <body class="bg-blue-200 text-green-900 flex p-6 lg:p-8 min-h-screen flex-col">
+    <body class="bg-green-100 text-green-900 flex p-6 lg:p-8 min-h-screen flex-col min-h-screen">
         
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
@@ -34,15 +34,18 @@
                     @else
                         <a
                             href="{{ route('login') }}"
-                            class="inline-block px-5 py-3.5 text-lg font-bold text-white hover:text-gray-200 bg-emerald-950 hover:bg-emerald-1000 shadow transition rounded-lg text-sm leading-normal">
+                            class="inline-flex px-5 py-3.5 text-lg font-bold text-white hover:text-gray-200 bg-emerald-950 hover:bg-emerald-800 shadow transition rounded-lg text-sm leading-normal">
                                 Se connecter
+                                <x-heroicon-o-arrow-right-on-rectangle class="w-5 h-5 text-white"/>
                         </a>
 
                         @if (Route::has('register'))
                             <a
                                 href="{{ route('register') }}"
-                            class="inline-block px-5 py-3.5 text-lg font-bold text-white bg-emerald-800 hover:bg-emerald-900 shadow transition rounded-lg text-sm leading-normal">
+                            class="inline-flex gap-2 px-5 py-3.5 text-lg font-bold text-white bg-emerald-800 hover:bg-emerald-900 shadow transition rounded-lg text-sm leading-normal">
                                 S'inscrire
+                                 <x-heroicon-o-user-plus class="w-5 h-5 text-white"/>
+
                             </a>
                         @endif
                     @endauth
@@ -53,5 +56,45 @@
         @if (Route::has('login'))
             <div class="h-14.5 hidden lg:block"></div>
         @endif
+        <footer class="w-full text-xs text-center text-white-500 mt-auto py-4 bg-emerald-300">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 items-start">
+                <div class="space-y-1.5">
+                    <div class="flex items-center gap-2">
+                        <img src="{{ asset('assets/images/logo.jpg') }}" alt="" class="w-10 h-10 object-contain" style="border: 2px solid #4CAF50; border-radius: 50%;">
+                        <span class="text-sm font-bold text-amber-800">FoutaAgriBusiness</span>
+                    </div>
+                    <p class="text-sm text-green">
+                        Votre partenaire de confiance pour un développement agricole durable.
+                    </p>
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-sm font-bold text-amber-800">Liens utiles</h3>
+                    <ul class="space-y-1">
+                         <li><a href="#" class="text-sm text-green hover:text-gray-200">À propos de nous</a></li>
+                        <li><a href="#" class="text-sm text-green hover:text-gray-200">Services agricoles</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-sm font-bold text-amber-800">Contact</h3>
+                    <ul class="space-y-1">
+                        <li class="text-sm text-green">Email: info@foutaagribusiness.com</li>
+                        <li class="text-sm text-green">Téléphone: +224 621 44 48 37</li>
+                    </ul>
+                </div>
+                <div class="space-y-1.5">
+                    <h3 class="text-sm font-bold text-amber-800">Suivez-nous</h3>
+                    <ul class="flex space-x-4">
+                        <li><a href="https://www.facebook.com/foutaagribusiness" target="_blank" class="text-green hover:text-gray-200"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://twitter.com/foutaagribusiness" target="_blank" class="text-green hover:text-gray-200"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://www.linkedin.com/company/foutaagribusiness" target="_blank" class="text-green hover:text-gray-200"><i class="fab fa-linkedin-in"></i></a></li>
+                    </ul>
+                    </div>
+
+            </div>
+
+           <div class="copyright text-sm text-amber-800 mt-4">
+                &copy; 2026 FoutaAgriBusiness. Tous droits réservés.
+            </div>
+        </footer>
     </body>
 </html>

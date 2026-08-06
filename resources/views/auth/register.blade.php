@@ -6,22 +6,24 @@
 
         <!-- Champ Nom -->
         <div>
-            <x-input-label for="name" :value="__('Nom complet')" class="text-slate-700 font-sembold text-xs uppercase tracking-wide mb-1"/>
+            <x-input-label for="name" class="text-slate-700 font-sembold text-xs uppercase tracking-wide mb-1"/>
+            <x-heroicon-o-user class="w-5 h-5"/>
             <x-text-input id="name" placeholder="Votre nom complet" class="block mt-1 w-full px-4 py-2.5 bg-slate-50 border-slate-300 rounded-lg text-slate-900 focus:bg-write focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             <x-input-error :messages="$errors->get('name')" class="mt-2 text-red-500 font-medium" />
         </div>
 
         <!-- Champ Email -->
         <div class="mt-4">
-            <x-input-label for="email" :value="__('E-mail')" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-input-label for="email" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-heroicon-o-envelope class="w-5 h-5"/>
             <x-text-input id="email" placeholder="aliou@gmail.com" class="block mt-1 w-full px-4 py-2.5 bg-slate-50 border-slate-300 rounded-lg text-slate-900 focus:bg-write focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200" type="email" name="email" :value="old('email')" required autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2 text-red-500 font-medium" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('Mot de passe')" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
-
+            <x-input-label for="password" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-heroicon-o-lock-closed class="w-5 h-5"/>
             <x-text-input id="password" placeholder="Minimum 8 caractères" class="block mt-1 w-full px-4 py-2.5 bg-slate-50 border-slate-300 rounded-lg text-slate-900 focus:bg-write focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200"
                             type="password"
                             name="password"
@@ -32,8 +34,8 @@
 
         <!-- Confirm Password -->
         <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirmation mot de passe')" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
-
+            <x-input-label for="password_confirmation" class="text-slate-700 font-semibold text-xs uppercase tracking-wide mb-1" />
+            <x-heroicon-o-shield-check class="w-5 h-5" />
             <x-text-input id="password_confirmation" placeholder="Confirmer le mot de passe" class="block mt-1 w-full px-4 py-2.5 bg-slate-50 border-slate-300 rounded-lg text-slate-900 focus:bg-write focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200"
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
