@@ -7,6 +7,9 @@ use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use App\Models\role;
+
 
 class User extends Authenticatable
 {
@@ -23,7 +26,15 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    
+    public function roles(): BelongsToMany
+    {
+        return $this->belongsToMany(role::class);
+    }
+    public function hasRole(string $rolename): bool
+    {
+        return $this->roles()->where('name', $rolename)->exists();
+    }
     /**
      * The attributes that should be hidden for serialization.
      *

@@ -11,6 +11,7 @@
             <x-heroicon-o-envelope class="w-5 h-5" />
             <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')"  placeholder="Votre adresse email" required autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            
         </div>
 
         <!-- Password -->
