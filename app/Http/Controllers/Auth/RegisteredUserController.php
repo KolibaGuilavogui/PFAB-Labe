@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use App\Models\role;
+use App\Models\Role;
+
 
 
 class RegisteredUserController extends Controller
@@ -44,12 +45,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        $roleacheteur=Role::where('nom_role','acheteur')->first();
-        if($roleacheteur){
-            $user->roles()->attach($roleacheteur);
-        }
-
-
+        $user->addRole('client');
         event(new Registered($user));
 
         Auth::login($user);

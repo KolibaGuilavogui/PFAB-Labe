@@ -5,6 +5,9 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Role;
+use App\Models\User;
+
+
 
 class RoleSeeder extends Seeder
 {
@@ -13,13 +16,27 @@ class RoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles=[
-             ['nom_role'=>'admin','libelle'=>'Administrateur'],
-             ['nom_role'=>'producteur','libelle'=>'Producteur'],
-             ['nom_role'=>'acheteur','libelle'=>'Acheteur'],
-        ];
-       foreach($roles as $role){
-        Role::firstOrCreate(['nom_role'=>$role['nom_role']],$role);
-       }
+        Role::create([
+            'name'=>'admin',
+            'display_name'=>'Administrateur',
+            'description'=>'Administrateur du site',
+        ]);
+         Role::create([
+            'name'=>'producteur',
+            'display_name'=>'Producteur',
+            'description'=>'Producteur agricole',
+        ]);
+         Role::create([
+            'name'=>'client',
+            'display_name'=>'Client',
+            'description'=>'Client du site',
+        ]);
+         $adminUser=User::create([
+        'name'=>'Admin',
+        'email'=>'adminfab@gmail.com',
+        'password'=>bcrypt('fab2026'),
+        ]);
+        $adminUser->addRole('admin');
     }
+   
 }

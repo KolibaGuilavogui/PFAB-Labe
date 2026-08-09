@@ -8,13 +8,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use App\Models\role;
+use Laratrust\Contracts\LaratrustUser;
+use Laratrust\Traits\HasRolesAndPermissions;
 
 
-class User extends Authenticatable
+class User extends Authenticatable implements LaratrustUser
 {
     /** @use HasFactory<UserFactory> */
-    use HasFactory, Notifiable;
+    use HasFactory, Notifiable,HasRolesAndPermissions;
 
     /**
      * The attributes that are mass assignable.
@@ -27,14 +28,7 @@ class User extends Authenticatable
         'password',
     ];
     
-    public function roles(): BelongsToMany
-    {
-        return $this->belongsToMany(role::class);
-    }
-    public function hasRole(string $rolename): bool
-    {
-        return $this->roles()->where('name', $rolename)->exists();
-    }
+    
     /**
      * The attributes that should be hidden for serialization.
      *
