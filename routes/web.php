@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
         $user=auth()->user();
         if($user->hasRole('admin')){
             return redirect()->route('admin.dashboard');
+
         }
         if($user->hasRole('producteur')){
             return redirect()->route('producteur.dashboard');
@@ -30,10 +31,13 @@ Route::middleware('auth')->group(function () {
     });
     Route::middleware(['auth', 'role:admin'])->group(function(){
         Route::get('/admin/dashboard',[AdminController::class,'dashboard'])->name('admin.dashboard');
+        Route::get('/admin/gestionuser', [AdminController::class,'gestionUser'])->name('gestionuser');
+
     });
     Route::middleware(['auth', 'role:producteur'])->group(function(){
         Route::get('/producteur/dashboard', [ProducteurController::class, 'dashboard'])->name('producteur.dashboard');
     });
+
 });
 
 require __DIR__.'/auth.php';

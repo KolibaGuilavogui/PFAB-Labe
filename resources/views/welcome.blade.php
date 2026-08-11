@@ -25,13 +25,7 @@
         <header class="w-full lg:max-w-4xl max-w-[335px] text-sm mb-6 not-has-[nav]:hidden">
             @if (Route::has('login'))
                 <nav class=" absolute top-0 right-0 p-4 mr-2 mt-2 flex items-center justify-end gap-6 z-10">
-                    @auth
-                        <a
-                            href="{{ url('/dashboard') }}"
-                            class="inline-block px-5 py-2.5 text-white bg-emerald-800 hover:bg-emerald-900">
-                            Tableau de bord
-                        </a>
-                    @else
+                    @guest
                         <a
                             href="{{ route('login') }}"
                             class="inline-flex px-5 py-3.5 text-lg font-bold text-white hover:text-gray-200 bg-emerald-950 hover:bg-emerald-800 shadow transition rounded-lg text-sm leading-normal">
@@ -48,7 +42,7 @@
 
                             </a>
                         @endif
-                    @endauth
+                    @endguest
                 </nav>
             @endif
         </header>
