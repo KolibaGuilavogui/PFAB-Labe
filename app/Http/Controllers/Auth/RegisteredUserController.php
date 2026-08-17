@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Role;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,9 +13,6 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use App\Models\Role;
-
-
 
 class RegisteredUserController extends Controller
 {
@@ -39,17 +37,24 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        // 1. Création du compte utilisateur
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
 
-        $user->addRole('client');
+        // 2. Attachement du rôle client via la relation Eloquent classique
+        $clientRole = Role::where('name', 'client')->first();
+        if ($clientRole) {
+            $user->roles()->attach($clientRole->id);
+        }
+
         event(new Registered($user));
 
         Auth::login($user);
 
-        return redirect(route('dashboard'));
+        // 3. Redirection vers l'espace client (adapté avec le nom de route de ton contrôleur AuthenticatedSession)
+        return redirect()->route('client.espaceclient');
     }
 }

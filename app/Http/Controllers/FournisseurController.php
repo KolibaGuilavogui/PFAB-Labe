@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ProducteurController extends Controller
+class FournisseurController extends Controller
 {
     public function dashboard(){
-        return view('producteur.espaceproducteur');
+        return view('fournisseur.espacefournisseur');
     }
 }

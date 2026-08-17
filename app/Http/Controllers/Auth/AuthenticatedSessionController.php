@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
-
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -25,10 +24,27 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-
         $request->authenticate();
+
         $request->session()->regenerate();
-        return redirect()->intended(route('dashboard', absolute: false));
+
+        $user = $request->user();
+
+        // Détermination de la route de destination selon le rôle
+        $defaultRoute = route('dashboard');
+
+        if ($user->roles->contains('name', 'admin')) {
+            $defaultRoute = route('admin.dashboard');
+        } elseif ($user->roles->contains('name', 'producteur')) {
+            $defaultRoute = route('producteur.espaceproducteur');
+        } elseif ($user->roles->contains('name', 'fournisseur')) {
+            $defaultRoute = route('fournisseur.espacefournisseur');
+        } elseif ($user->roles->contains('name', 'client')) {
+            $defaultRoute = route('client.espaceclient');
+        }
+
+        // redirect()->intended() gère automatiquement l'URL mémorisée dans la session
+        return redirect()->intended($defaultRoute);
     }
 
     /**

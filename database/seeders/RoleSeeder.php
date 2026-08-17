@@ -31,6 +31,12 @@ class RoleSeeder extends Seeder
             'display_name'=>'Client',
             'description'=>'Client du site',
         ]);
+         Role::create([
+            'name'=>'fournisseur',
+            'display_name'=>'Fournisseur_intrants',
+            'description'=>'Fournisseur d\'intrants agricoles',
+        ]);
+
          $adminUser=User::create([
         'name'=>'Admin',
         'email'=>'adminfab@gmail.com',
